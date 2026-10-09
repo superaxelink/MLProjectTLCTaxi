@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Pytest
+.pytest_cache/
+
+# Datos (no versionamos datos grandes)
+data/raw/
+data/processed/
+data/aggregated/
+
+# Logs
+logs/
+*.log
+
+# Env vars
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# Textos
+file_structure.txt
+needed_or_not
+structure.txt
+template_mental_extract
+useful_comands.txt

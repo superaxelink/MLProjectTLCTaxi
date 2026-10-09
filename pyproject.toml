@@ -1,0 +1,49 @@
+# ============================================================
+# pyproject.toml
+# Configuración del proyecto taxi-etl.
+# 
+# Este archivo es el estándar moderno de Python (PEP 518) para
+# configurar proyectos. Reemplaza a setup.py, setup.cfg, pytest.ini,
+# y otros archivos de configuración dispersos.
+# ============================================================
+
+# ------------------------------------------------------------
+# [project] — Metadatos del proyecto
+# 
+# Es lo que usarías si publicaras el paquete en PyPI.
+# Aunque no lo publiques, pip lo necesita si haces "pip install -e ."
+# ------------------------------------------------------------
+[project]
+
+# Nombre del paquete. Con "pip install -e ." se instala con este nombre.
+name = "taxi-etl"
+
+# Versión del proyecto. Útil para releases y para saber qué tienes instalado.
+version = "0.1.0"
+
+# Versión mínima de Python requerida. Si alguien intenta instalarlo
+# con Python 3.9, pip lo rechaza con un error claro.
+requires-python = ">=3.10"
+
+
+# ------------------------------------------------------------
+# [tool.pytest.ini_options] — Configuración de pytest
+# 
+# La sección [tool.X] es la convención para configurar herramientas
+# específicas. Cada herramienta (pytest, ruff, black, mypy) tiene
+# su propia sección.
+# ------------------------------------------------------------
+[tool.pytest.ini_options]
+
+# Dónde buscar tests. Sin esto, pytest busca en TODO el proyecto,
+# lo cual es lento y puede encontrar tests que no quieres correr.
+testpaths = ["tests"]
+
+# Añade "src/" al sys.path antes de correr los tests.
+# Esto permite hacer "from pipelines.X import ..." en los tests
+# sin necesidad de sys.path.insert manual.
+# 
+# NOTA: si haces "pip install -e ." (editable install), ya no
+# necesitas esta línea, porque el paquete queda instalado en el
+# entorno virtual y es importable desde cualquier lugar.
+pythonpath = ["src"]

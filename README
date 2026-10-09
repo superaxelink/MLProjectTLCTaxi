@@ -1,0 +1,31 @@
+# NYC Taxi ETL + ML Pipeline
+Pipeline ETL que extrae datos de NYC Taxi TLC, los transforma con un schema configurable, y entrena un modelo para predecir [target].
+
+## Arquitectura
+[Diagrama ASCII: Extract → Transform → Load → Features → Train]
+
+┌───────────────────┐     ┌───────────────────┐     ┌────────────┐      ┌────────────────┐     ┌──────────────┐
+│                   │     │                   │     │            │      │                │     │              │
+│                   │     │                   │     │            │      │                │     │              │
+│      EXTRACT      ┼────►│     TRANSFORM     ┼────►│    LOAD    ┼─────►│    FEATURES    ┼────►│     TRAIN    │
+│                   │     │                   │     │            │      │                │     │              │
+│                   │     │                   │     │            │      │                │     │              │
+└───────────────────┘     └───────────────────┘     └────────────┘      └────────────────┘     └──────────────┘
+
+## Quickstart
+1. pip install -e .
+2. python -m pipelines --date 2026-03
+
+## Decisiones de diseño
+- Flex Fare excluido (ver docs/decisions.md)
+- Schema-driven transform (config separada de lógica)
+- Load atómico (staging + swap)
+
+## Tests
+pytest -v
+
+## Estructura
+src/pipelines/ (extract, transform, load, config)
+src/models/ (train, evaluate)
+tests/
+docs/
